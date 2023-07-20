@@ -413,6 +413,14 @@ function drawGhost() {
   context.restore();
 }
 
+let showGhost = true;
+
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'g' || event.key === 'G') {
+    showGhost = !showGhost; // Переключение значения переменной showGhost
+  }
+});
+
 function loop() {
   if (isPaused) {
     return; // Остановка выполнения функции при паузе
@@ -454,7 +462,9 @@ function loop() {
         }
       }
     }
-    drawGhost(); // Добавление вызова после отображения текущего тетромино
+    if (showGhost) {
+      drawGhost();
+    }
   }
   drawScore();
   drawNextPiece();
