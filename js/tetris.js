@@ -415,8 +415,8 @@ function drawGhost() {
 
 let showGhost = true;
 
-document.addEventListener('keydown', function (event) {
-  if (event.key === 'g' || event.key === 'G') {
+document.addEventListener('keydown', function(event) {
+  if (event.code === 'KeyG') { // Используйте event.code вместо event.key
     showGhost = !showGhost; // Переключение значения переменной showGhost
   }
 });
