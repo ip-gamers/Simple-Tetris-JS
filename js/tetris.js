@@ -1,13 +1,15 @@
 // Массив с пасхальным видео
 let keySequence = '';
 const combination = '4815162342'; // Комбинация, которую нужно ввести пользователю.
+let videoOpened = false; // Переменная для проверки, было ли открыто окно с видео.
 
 document.addEventListener('keydown', function (e) {
   keySequence += e.key;
 
-  if (keySequence === combination) {
+  if (keySequence === combination && !videoOpened) {
     playVideo();
     keySequence = '';
+    videoOpened = true; // Устанавливаем значение true, чтобы окно с видео больше не открывалось.
   } else if (!combination.startsWith(keySequence)) {
     keySequence = '';
   }
