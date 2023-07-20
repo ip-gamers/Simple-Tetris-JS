@@ -1,5 +1,6 @@
+// Массив с пасхальным видео
 let keySequence = '';
-const combination = '4815162342';
+const combination = '4815162342'; // Комбинация, которую нужно ввести пользователю.
 
 document.addEventListener('keydown', function (e) {
   keySequence += e.key;
@@ -13,7 +14,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 function playVideo() {
-  // Создаем всплывающее окно (overlay)
+  // Настройки всплывающего окна с видео
   const overlay = document.createElement('div');
   overlay.style.position = 'fixed';
   overlay.style.top = '0';
@@ -26,12 +27,11 @@ function playVideo() {
   overlay.style.alignItems = 'center';
   overlay.style.zIndex = '9999';
 
-  // Создаем элемент видео
   const videoElement = document.createElement('video');
-  videoElement.src = 'https://ip-gamers.net/downloads/Ever/pages_media/2_4zshit.mp4';
-  videoElement.autoplay = true;
-  videoElement.style.maxWidth = '90%';
-  videoElement.style.maxHeight = '90%';
+  videoElement.src = 'https://ip-gamers.net/downloads/Ever/pages_media/2_4zshit.mp4'; // Прямая ссылка на видео
+  videoElement.autoplay = true; // Автовоспроизведение
+  videoElement.style.maxWidth = '60%';
+  videoElement.style.maxHeight = '60%';
 
   // Добавляем видео во всплывающее окно
   overlay.appendChild(videoElement);
@@ -44,11 +44,11 @@ function playVideo() {
     document.body.removeChild(overlay);
   });
 }
+// Окончание массива с пасхальным видео
 
-// Добавляем дополнительную переменную для хранения удерживаемого тетромино
-let heldTetromino = null;
+let heldTetromino = null; // Дополнительная переменная для хранения удерживаемого тетромино
 
-// Получаем ссылку на элемент контейнера для отображения удерживаемого тетромино
+// Ссылка на элемент контейнера для отображения удерживаемого тетромино
 const holdPieceCanvas = document.getElementById('holdPiece');
 const holdPieceContext = holdPieceCanvas.getContext('2d');
 const holdPieceGrid = 20;
@@ -86,15 +86,15 @@ function holdTetromino() {
     heldTetromino = tempTetromino;
   }
 
-  // Сбрасываем позицию тетромино вверх по центру
+  // Сброс позиции тетромино, снова на вверх по центру
   tetromino.row = tetromino.name === 'I' ? -1 : -2;
   tetromino.col = playfield[0].length / 2 - Math.ceil(tetromino.matrix[0].length / 2);
 
   drawNextPiece();
-  drawHoldPiece(); // Обновляем отображение удерживаемого тетромино
+  drawHoldPiece(); // Обновление отображения удерживаемого тетромино
 }
 
-// Добавляем новый обработчик события для определения нажатия клавиши "C"
+// Обработчик события для определения нажатия клавиши "C"
 document.addEventListener('keydown', function (e) {
   if (e.keyCode === 67) {
     holdTetromino();
@@ -105,6 +105,7 @@ const startBtn = document.querySelector('#start_btn');
 const bgMusic = document.getElementById('bgMusic');
 const lineClearSound = document.getElementById('lineClearSound');
 const gameOverSound = document.getElementById('gameOverSound');
+
 
 // Определение нового элемента <canvas> для отображения основного игрового поля
 const canvas = document.querySelector('canvas#game');
@@ -180,10 +181,10 @@ function togglePause() {
   isPaused = !isPaused;
 
   if (isPaused) {
-    cancelAnimationFrame(rAF); // Останавливаем анимацию и игровой цикл при паузе
+    cancelAnimationFrame(rAF); // Остановка анимации и игрового цикла при паузе
     bgMusic.pause();
   } else {
-    rAF = requestAnimationFrame(loop); // Возобновляем анимацию и игровой цикл после паузы
+    rAF = requestAnimationFrame(loop); // Возобновление анимации и игрового цикла после паузы
     bgMusic.play();
   }
 }
@@ -253,7 +254,7 @@ function updateScore(clearedLines) {
   const scoreElement = document.getElementById('score');
   scoreElement.textContent = `Счет: ${score}`;
 
-  // Сохраняем счет игрока в localStorage
+  // Сохранение счета игрока в localStorage (Я не знаю зачем это нужно в моем тетрисе)
   localStorage.setItem('playerScore', score.toString());
 }
 
@@ -414,7 +415,7 @@ function drawGhost() {
 
 function loop() {
   if (isPaused) {
-    return; // Остановить выполнение функции при паузе
+    return; // Остановка выполнения функции при паузе
   }
 
   rAF = requestAnimationFrame(loop);
@@ -453,7 +454,7 @@ function loop() {
         }
       }
     }
-    drawGhost(); // Добавить этот вызов после отображения текущего тетромино
+    drawGhost(); // Добавление вызова после отображения текущего тетромино
   }
   drawScore();
   drawNextPiece();
