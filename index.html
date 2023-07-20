@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <script src="https://kit.fontawesome.com/d2a1b4089e.js" crossorigin="anonymous"></script>
   <script async src="\js\tetris.js"></script>
   <link rel='stylesheet' href='\css\style.css' media='all'>
 
@@ -12,8 +13,9 @@
   <div class="centered-content">
     <canvas width="320" height="640" id="game"></canvas>
     <div class="sidebar">
-      Запас: <canvas width="75" height="50" id="holdPiece"></canvas>
-      Дальше: <canvas width="75" height="50" id="nextPiece"></canvas>
+      <i class="fa-solid fa-circle-pause"></i></i><br><canvas width="75" height="50" id="holdPiece"></canvas>
+      <hr>
+      <i class="fa-solid fa-forward"></i><br><canvas width="75" height="50" id="nextPiece"></canvas>
       <hr>
       <span id="score" style="font-size: 18px;"></span><br>
       <span id="rows" style="font-size: 14px;"></span><br>
