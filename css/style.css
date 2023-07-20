@@ -1,0 +1,36 @@
+.body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.centered-content {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+#game {
+  margin-right: 10px;
+  padding: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar {
+  position: relative;
+  top: 0;
+  right: 0;
+  border: 2px solid #57595d;
+  padding: 15px;
+  text-align: center;
+}
+
+.sidebar hr {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.sidebar a {
+  text-decoration: none;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script async src="\js\tetris.js"></script>
+  <link rel='stylesheet' href='\css\style.css' media='all'>
+
+  <title>Tetris JavaScript</title>
+</head>
+
+<body>
+  <div class="centered-content">
+    <canvas width="320" height="640" id="game"></canvas>
+    <div class="sidebar">
+      Запас: <canvas width="75" height="50" id="holdPiece"></canvas>
+      Дальше: <canvas width="75" height="50" id="nextPiece"></canvas>
+      <hr>
+      <span id="score" style="font-size: 18px;"></span><br>
+      <span id="rows" style="font-size: 14px;"></span><br>
+      <span id="level" style="font-size: 14px;"></span>
+      <hr>
+      <a href="https://ip-gamers.net/topic/3218-podderzhka-igry-tetris-onlajn/" target="_blank">Помощь</a><br>
+      <hr>
+      Авторы:<br> <a href="https://ip-gamers.net/profile/1-ryancoolround/" target="_blank">Ryancoolround</a>, <a
+        href="https://ip-gamers.net/profile/5002-ed-msl/" target="_blank">Ed MSL</a>
+      <hr>
+      Удержать: C<br>Музыка: M<br>Пауза: P
+      <br><button id="start_btn">Пуск</button>
+    </div>
+  </div>
+  <audio id="gameOverSound">
+    <source src="{media='8'}" type="audio/mpeg">
+  </audio>
+  <audio id="lineClearSound">
+    <source src="{media='7'}" type="audio/mpeg">
+  </audio>
+  <audio id="bgMusic" loop>
+    <source src="{media='6'}" type="audio/mpeg">
+  </audio>
+</body>
+
+</html>
