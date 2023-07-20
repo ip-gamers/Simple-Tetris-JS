@@ -1,3 +1,50 @@
+let keySequence = '';
+const combination = '4815162342';
+
+document.addEventListener('keydown', function (e) {
+  keySequence += e.key;
+
+  if (keySequence === combination) {
+    playVideo();
+    keySequence = '';
+  } else if (!combination.startsWith(keySequence)) {
+    keySequence = '';
+  }
+});
+
+function playVideo() {
+  // Создаем всплывающее окно (overlay)
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '9999';
+
+  // Создаем элемент видео
+  const videoElement = document.createElement('video');
+  videoElement.src = 'https://ip-gamers.net/downloads/Ever/pages_media/2_4zshit.mp4';
+  videoElement.autoplay = true;
+  videoElement.style.maxWidth = '90%';
+  videoElement.style.maxHeight = '90%';
+
+  // Добавляем видео во всплывающее окно
+  overlay.appendChild(videoElement);
+
+  // Добавляем всплывающее окно на страницу
+  document.body.appendChild(overlay);
+
+  // Удаляем всплывающее окно (и видео) после окончания видео
+  videoElement.addEventListener('ended', function () {
+    document.body.removeChild(overlay);
+  });
+}
+
 // Добавляем дополнительную переменную для хранения удерживаемого тетромино
 let heldTetromino = null;
 
@@ -54,30 +101,6 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-let keySequence = '';
-const combination = '4815162342';
-
-document.addEventListener('keydown', function (e) {
-  keySequence += e.key;
-
-  if (keySequence === combination) {
-    playVideo();
-    keySequence = '';
-  } else if (!combination.startsWith(keySequence)) {
-    keySequence = '';
-  }
-});
-
-function playVideo() {
-  const videoElement = document.createElement('video');
-  videoElement.src = 'https://ip-gamers.net/downloads/Ever/pages_media/2_4zshit.mp4';
-  videoElement.autoplay = true;
-  document.body.appendChild(videoElement);
-
-  videoElement.addEventListener('ended', function () {
-    document.body.removeChild(videoElement);
-  });
-}
 const startBtn = document.querySelector('#start_btn');
 const bgMusic = document.getElementById('bgMusic');
 const lineClearSound = document.getElementById('lineClearSound');
