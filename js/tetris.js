@@ -436,7 +436,7 @@ function toggleGhost() {
   showGhost = !showGhost; // Переключение значения переменной showGhost
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
   if (event.code === 'KeyG') { // Используйте event.code вместо event.key
     toggleGhost();
   }

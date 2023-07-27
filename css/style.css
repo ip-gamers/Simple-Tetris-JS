@@ -106,6 +106,16 @@ ul {
   display: none;
 }
 
-.btn--active{
+.btn--active {
   fill: #484848;
+}
+
+/** Стили отвечающие за обозначение кнопок управления **/
+.button-container {
+  text-align: center;
+}
+
+.button-text {
+  display: block;
+  margin-bottom: 10px;
 }
