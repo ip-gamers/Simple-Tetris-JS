@@ -2,6 +2,12 @@
   font-family: Arial, sans-serif;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .centered-content {
   display: flex;
   justify-content: center;
@@ -32,4 +38,74 @@
 
 .sidebar a {
   text-decoration: none;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  fill: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, .5);
+  border: 1px solid rgb(57, 57, 57);
+  border-radius: 5px;
+  background: rgb(32, 32, 32) radial-gradient(rgb(64, 64, 64), rgb(32, 32, 32) 80%);
+  box-shadow:
+    0 6px rgb(43, 43, 43),
+    0 3px 15px rgba(0, 0, 0, .4),
+    inset 0 1px rgba(45, 45, 45, 0.3),
+    inset 0 0 3px rgba(125, 122, 122, 0.5);
+  outline: none;
+  transition: .2s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button:disabled {
+  background: rgb(85, 85, 85);
+  color: #838383;
+  fill: #838383;
+  cursor: default;
+}
+
+.button:hover {
+  background: rgb(42, 42, 42) radial-gradient(rgb(89, 88, 88), rgb(42, 42, 42) 80%);
+}
+
+.button:disabled:hover {
+  background: rgb(85, 85, 85);
+}
+
+.button:active {
+  background: rgb(32, 32, 32) radial-gradient(rgb(79, 78, 78), rgb(32, 32, 32) 80%);
+  box-shadow:
+    0 2px rgb(43, 43, 43),
+    0 1px 6px rgba(0, 0, 0, .4),
+    inset 0 1px rgba(45, 45, 45, .3),
+    inset 0 0 3px rgba(122, 122, 122, .5);
+  transform: translate(0, 4px);
+}
+
+.button:disabled:active {
+  transform: none;
+  box-shadow:
+    0 6px rgb(43, 43, 43),
+    0 3px 15px rgba(0, 0, 0, .4),
+    inset 0 1px rgba(45, 45, 45, 0.3),
+    inset 0 0 3px rgba(125, 122, 122, 0.5);
+}
+
+.btn--icon {
+  padding: 8px 10px;
+}
+
+.hide {
+  display: none;
+}
+
+.btn--active{
+  fill: #484848;
 }

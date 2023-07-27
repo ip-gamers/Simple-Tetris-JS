@@ -104,6 +104,14 @@ document.addEventListener('keydown', function (e) {
 });
 
 const startBtn = document.querySelector('#start_btn');
+const gameProcessBtn = document.querySelector('#game-process-btn');
+const gamePlayIcon = document.querySelector('#game-play');
+const gamePauseIcon = document.querySelector('#game-pause');
+const soundBtn = document.querySelector('#sound-btn');
+const soundOnIcon = document.querySelector('#sound-on');
+const soundOffIcon = document.querySelector('#sound-off');
+const ghostBtn = document.querySelector('#ghost-btn');
+const holdBtn = document.querySelector('#hold-btn');
 const bgMusic = document.getElementById('bgMusic');
 const lineClearSound = document.getElementById('lineClearSound');
 const gameOverSound = document.getElementById('gameOverSound');
@@ -182,6 +190,9 @@ let tetromino;
 function togglePause() {
   isPaused = !isPaused;
 
+  gamePlayIcon.classList.toggle('hide');
+  gamePauseIcon.classList.toggle('hide');
+
   if (isPaused) {
     cancelAnimationFrame(rAF); // Остановка анимации и игрового цикла при паузе
     bgMusic.pause();
@@ -193,6 +204,9 @@ function togglePause() {
 
 function toggleSound() {
   isSoundEnabled = !isSoundEnabled;
+
+  soundOnIcon.classList.toggle('hide');
+  soundOffIcon.classList.toggle('hide');
 
   if (isSoundEnabled) {
     bgMusic.play();
@@ -417,9 +431,14 @@ function drawGhost() {
 
 let showGhost = true;
 
+function toggleGhost() {
+  ghostBtn.classList.toggle('btn--active');
+  showGhost = !showGhost; // Переключение значения переменной showGhost
+}
+
 document.addEventListener('keydown', function(event) {
   if (event.code === 'KeyG') { // Используйте event.code вместо event.key
-    showGhost = !showGhost; // Переключение значения переменной showGhost
+    toggleGhost();
   }
 });
 
@@ -580,6 +599,11 @@ startBtn.addEventListener('click', () => {
     startGame();
   }
 
+  gameProcessBtn.removeAttribute('disabled');
+  soundBtn.removeAttribute('disabled');
+  ghostBtn.removeAttribute('disabled');
+  holdBtn.removeAttribute('disabled')
+
   bgMusic.play();
   updateSpeed(1);
   rAF = requestAnimationFrame(loop);
@@ -596,3 +620,8 @@ document.addEventListener('keydown', function (e) {
     toggleSound();
   }
 });
+
+gameProcessBtn.addEventListener('click', togglePause);
+soundBtn.addEventListener('click', toggleSound);
+ghostBtn.addEventListener('click', toggleGhost);
+holdBtn.addEventListener('click', holdTetromino);
