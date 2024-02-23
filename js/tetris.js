@@ -1,3 +1,38 @@
+function displayPlayerRatings() {
+  const ratingsContainer = document.getElementById('player-ratings'); // Замените 'player-ratings' на ID вашего контейнера
+
+  // Очищаем контейнер перед добавлением новых данных
+  ratingsContainer.innerHTML = '';
+
+  // Создаем элементы списка для каждого рейтинга
+  playerRatings.forEach((rating, index) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `${index + 1}. ${rating.name}: ${rating.score}`;
+    ratingsContainer.appendChild(listItem);
+  });
+}
+
+
+function updatePlayerRating() {
+  const playerName = prompt('Введите ваше имя:'); // Замените это на что-то более удобное
+  const playerScore = score;
+
+  const playerRating = { name: playerName, score: playerScore };
+  playerRatings.push(playerRating);
+
+  // Сортируем рейтинг в порядке убывания
+  playerRatings.sort((a, b) => b.score - a.score);
+
+  // Ограничиваем количество хранимых рейтингов, например, до 10
+  playerRatings = playerRatings.slice(0, 10);
+
+  // Обновляем localStorage
+  localStorage.setItem('playerRatings', JSON.stringify(playerRatings));
+}
+
+
+let playerRatings = JSON.parse(localStorage.getItem('playerRatings')) || [];
+
 // Массив с пасхальным видео
 let keySequence = '';
 const combination = '4815162342'; // Комбинация, которую нужно ввести пользователю.
@@ -238,6 +273,7 @@ function drawNextPiece() {
 
 // Генерация следующего тетромино
 function getNextTetromino() {
+  displayPlayerRatings();
   const name = tetrominoSequence.pop();
 
   if (tetrominoSequence.length === 0) {
@@ -365,6 +401,7 @@ function showGameOver() {
   context.textAlign = 'center';
   context.textBaseline = 'middle';
   context.fillText('108??', canvas.width / 2, canvas.height / 2);
+  updatePlayerRating();
 }
 
 function updateScore(clearedLines) {
@@ -436,12 +473,7 @@ function toggleGhost() {
   showGhost = !showGhost; // Переключение значения переменной showGhost
 }
 
-function toggleGhost() {
-  ghostBtn.classList.toggle('btn--active');
-  showGhost = !showGhost; // Переключение значения переменной showGhost
-}
-
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', function(event) {
   if (event.code === 'KeyG') { // Используйте event.code вместо event.key
     toggleGhost();
   }
