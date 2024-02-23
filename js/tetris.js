@@ -1,10 +1,13 @@
 function displayPlayerRatings() {
-  const ratingsContainer = document.getElementById('player-ratings'); // Замените 'player-ratings' на ID вашего контейнера
+  const ratingsContainer = document.getElementById('player-ratings');
 
-  // Очищаем контейнер перед добавлением новых данных
+  if (!ratingsContainer) {
+    console.error("Element with id 'player-ratings' not found!");
+    return;
+  }
+
   ratingsContainer.innerHTML = '';
 
-  // Создаем элементы списка для каждого рейтинга
   playerRatings.forEach((rating, index) => {
     const listItem = document.createElement('li');
     listItem.textContent = `${index + 1}. ${rating.name}: ${rating.score}`;
@@ -271,23 +274,17 @@ function drawNextPiece() {
   }
 }
 
-// Генерация следующего тетромино
 function getNextTetromino() {
-  displayPlayerRatings();
   const name = tetrominoSequence.pop();
 
   if (tetrominoSequence.length === 0) {
     generateSequence();
+    drawNextPiece(); // Добавляем вызов для отображения следующего тетромино
   }
 
   const matrix = tetrominos[name];
-
   const col = playfield[0].length / 2 - Math.ceil(matrix[0].length / 2);
-
   const row = name === 'I' ? -1 : -2;
-
-  // Отображение следующего тетромино
-  drawNextPiece();
 
   return {
     name: name,
@@ -297,17 +294,17 @@ function getNextTetromino() {
   };
 }
 
-// Счет Игры
 function updateScore(clearedLines) {
   const lineScores = [0, 1];
   score += lineScores[clearedLines];
   level = Math.floor(score / 5) + 1;
   updateSpeed(level);
+
   const scoreElement = document.getElementById('score');
   scoreElement.textContent = `Счет: ${score}`;
 
-  // Сохранение счета игрока в localStorage (Я не знаю зачем это нужно в моем тетрисе)
-  localStorage.setItem('playerScore', score.toString());
+  const levelElement = document.getElementById('level');
+  levelElement.textContent = `Уровень: ${level}`;
 }
 
 // Окончание Счета Игры
