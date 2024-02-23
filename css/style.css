@@ -1,3 +1,16 @@
+#player-ratings {
+  background: rgb(var(--theme-area_background_light));
+  border-radius: var(--radius-1);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  z-index: 1; /* Устанавливаем z-index, чтобы player-ratings был над sidebar */
+}
+
+.centered-content {
+  position: relative;
+}
+
 .body {
   font-family: Arial, sans-serif;
 }
